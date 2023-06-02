@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive form</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <form action="">
+        <img src="img/idlePanda.svg" alt="" id="pandaImg">
+        <label for="email">Email</label>
+        <div>
+            <input type="email" name="email" id="email" placeholder="Enter Email" autocomplete="off">
+            <i class='bx bx-sm bx-envelope'></i>
+        </div>
+        <label for="password">Password</label>
+        <div>
+            <input type="password" name="password" id="inputPaswd" placeholder="Enter Password">
+            <i class='bx bx-sm bx-show-alt' id="passIcon"></i>
+        </div>
+        <input type="submit" value="Login">
+    </form>
+</body>
+<script>
+    let paswdVisibilty = document.querySelector("#passIcon");
+    let inputPaswd = document.querySelector("#inputPaswd")
+    let InputEmail = document.querySelector("#email");
+    let pandaImg = document.querySelector("#pandaImg") 
+
+    paswdVisibilty.addEventListener("click",() => {
+        // if condition will change show eye icon to hide icon by adding removing classes
+        if(paswdVisibilty.classList.contains("bx-show-alt")){
+            paswdVisibilty.classList.remove("bx-show-alt")
+            paswdVisibilty.classList.add("bx-hide")
+            inputPaswd.type="text";
+            pandaImg.src = "img/Pandafocus.svg"
+        }
+        // else condition will reverse the outcome of this
+        else{
+            paswdVisibilty.classList.remove("bx-hide")
+            paswdVisibilty.classList.add("bx-show-alt")
+            inputPaswd.type="password";
+            pandaImg.src="img/eyeClose.svg"
+        }
+
+    })
+    InputEmail.addEventListener("focusin", () => {
+        pandaImg.src="img/Pandafocus.svg";
+    })
+    InputEmail.addEventListener("focusout", () => {
+        pandaImg.src="img/idlePanda.svg";
+    })
+    
+    inputPaswd.addEventListener("focusin", ()=> {
+        pandaImg.src = "img/eyeClose.svg";
+    })
+    inputPaswd.addEventListener("focusout", ()=> {
+        pandaImg.src = "img/idlePanda.svg";
+    })
+</script>
+</html>
